@@ -1,0 +1,5 @@
+dump.py
+medir.py
+shot*.png
+*.pyc
+__pycache__/

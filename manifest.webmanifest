@@ -1,0 +1,17 @@
+{
+  "name": "El Clásico 2021–2026",
+  "short_name": "El Clásico",
+  "description": "Los 18 Clásicos oficiales entre Real Madrid y Barcelona desde 2021: resultados, balance, goleadores y el partido de hoy.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07070c",
+  "theme_color": "#07070c",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
