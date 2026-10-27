@@ -210,16 +210,20 @@ footer{text-align:center;font-size:10.5px;color:#5c5a70;padding:6px 0 10px;line-
 
   <section class="tab" id="tab-hoy">
     <div class="next">
-      <p class="kicker" id="hoyComp">LaLiga · Jornada 10</p>
-      <h2>Barcelona – Real Madrid</h2>
-      <p class="meta">25 de octubre de 2026 · 21:00 · Spotify Camp Nou</p>
+      <p class="kicker" id="hoyComp">Próximo clásico</p>
+      <h2 id="hoyTitulo">Barcelona – Real Madrid</h2>
+      <p class="meta" id="hoyMeta">—</p>
       <div class="clock">
         <div><b id="cdD">--</b><span>días</span></div>
         <div><b id="cdH">--</b><span>horas</span></div>
         <div><b id="cdM">--</b><span>min</span></div>
         <div><b id="cdS">--</b><span>seg</span></div>
       </div>
-      <p class="mini" id="hoyEstado">Cuenta atrás para el Clásico de la jornada 10.</p>
+      <p class="mini" id="hoyEstado">—</p>
+    </div>
+    <div class="card">
+      <h3><span>Último clásico</span>Resultado</h3>
+      <p class="mini" id="ultimoBody" style="font-size:13px;line-height:1.55">—</p>
     </div>
     <div class="card">
       <h3><span>Después del partido</span>Añadir el resultado</h3>
@@ -251,7 +255,7 @@ footer{text-align:center;font-size:10.5px;color:#5c5a70;padding:6px 0 10px;line-
 </main>
 
 <script>
-const DATA = [{"f":"2021-10-24","comp":"LaLiga","inst":"J10","sede":"Camp Nou","casa":"Barcelona","marc":"1-2","gb":[["Agüero","90+7"]],"gm":[["Alaba","32"],["Lucas Vázquez","90+4"]],"nota":""},{"f":"2022-01-12","comp":"Supercopa","inst":"Semifinal","sede":"Riad (King Fahd)","casa":"Barcelona","marc":"2-3","gb":[["L. de Jong","41"],["Ansu Fati","83"]],"gm":[["Vinícius","25"],["Benzema","72"],["Valverde","98"]],"nota":"Prórroga"},{"f":"2022-03-20","comp":"LaLiga","inst":"J29","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-4","gb":[["Aubameyang","29, 51"],["Araújo","38"],["Ferran Torres","47"]],"gm":[],"nota":""},{"f":"2022-10-16","comp":"LaLiga","inst":"J9","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"3-1","gb":[["Ferran Torres","83"]],"gm":[["Benzema","12"],["Valverde","35"],["Rodrygo","90+1 (p.)"]],"nota":""},{"f":"2023-01-15","comp":"Supercopa","inst":"Final","sede":"Riad (King Fahd)","casa":"Real Madrid","marc":"1-3","gb":[["Gavi","33"],["Lewandowski","45"],["Pedri","69"]],"gm":[["Benzema","90+3"]],"nota":"Título: Barcelona"},{"f":"2023-03-02","comp":"Copa","inst":"Semifinal ida","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-1","gb":[["Militão","26 (p.p.)"]],"gm":[],"nota":""},{"f":"2023-03-19","comp":"LaLiga","inst":"J26","sede":"Camp Nou","casa":"Barcelona","marc":"2-1","gb":[["Sergi Roberto","45"],["Kessié","90+1"]],"gm":[["Araújo","9 (p.p.)"]],"nota":""},{"f":"2023-04-05","comp":"Copa","inst":"Semifinal vuelta","sede":"Camp Nou","casa":"Barcelona","marc":"0-4","gb":[],"gm":[["Vinícius","45+1"],["Benzema","50, 58 (p.), 80"]],"nota":"Global 4-1: pasa el Real Madrid"},{"f":"2023-10-28","comp":"LaLiga","inst":"J11","sede":"Montjuïc","casa":"Barcelona","marc":"1-2","gb":[["Gündoğan","6"]],"gm":[["Bellingham","68, 90+2"]],"nota":""},{"f":"2024-01-14","comp":"Supercopa","inst":"Final","sede":"Riad (King Saud)","casa":"Real Madrid","marc":"4-1","gb":[["Lewandowski","33"]],"gm":[["Vinícius","7, 10, 39 (p.)"],["Rodrygo","64"]],"nota":"Título: Real Madrid"},{"f":"2024-04-21","comp":"LaLiga","inst":"J32","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"3-2","gb":[["Christensen","6"],["Fermín López","69"]],"gm":[["Vinícius","18 (p.)"],["Lucas Vázquez","73"],["Bellingham","90+1"]],"nota":""},{"f":"2024-10-26","comp":"LaLiga","inst":"J11","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-4","gb":[["Lewandowski","54, 56"],["Lamine Yamal","77"],["Raphinha","84"]],"gm":[],"nota":""},{"f":"2025-01-12","comp":"Supercopa","inst":"Final","sede":"Yeda","casa":"Real Madrid","marc":"2-5","gb":[["Lamine Yamal","22"],["Lewandowski","36 (p.)"],["Raphinha","39, 48"],["Balde","45+10"]],"gm":[["Mbappé","5"],["Rodrygo","60"]],"nota":"Título: Barcelona"},{"f":"2025-04-26","comp":"Copa","inst":"Final","sede":"Sevilla (La Cartuja)","casa":"Barcelona","marc":"3-2","gb":[["Pedri","28"],["Ferran Torres","84"],["Koundé","116"]],"gm":[["Mbappé","70"],["Tchouaméni","77"]],"nota":"Prórroga · Título: Barcelona"},{"f":"2025-05-11","comp":"LaLiga","inst":"J35","sede":"Montjuïc","casa":"Barcelona","marc":"4-3","gb":[["Eric García","19"],["Lamine Yamal","32"],["Raphinha","34, 45"]],"gm":[["Mbappé","5 (p.), 14, 70"]],"nota":""},{"f":"2025-10-26","comp":"LaLiga","inst":"J10","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"2-1","gb":[["Fermín López","38"]],"gm":[["Mbappé","22"],["Bellingham","43"]],"nota":""},{"f":"2026-01-11","comp":"Supercopa","inst":"Final","sede":"Yeda","casa":"Barcelona","marc":"3-2","gb":[["Raphinha","36, 73"],["Lewandowski","45+4"]],"gm":[["Vinícius","45+2"],["Gonzalo García","45+6"]],"nota":"Título: Barcelona"},{"f":"2026-05-10","comp":"LaLiga","inst":"J35","sede":"Camp Nou","casa":"Barcelona","marc":"2-0","gb":[["Rashford","9"],["Ferran Torres","18"]],"gm":[],"nota":""}];
+const DATA = [{"f":"2021-10-24","comp":"LaLiga","inst":"J10","sede":"Camp Nou","casa":"Barcelona","marc":"1-2","gb":[["Agüero","90+7"]],"gm":[["Alaba","32"],["Lucas Vázquez","90+4"]],"nota":""},{"f":"2022-01-12","comp":"Supercopa","inst":"Semifinal","sede":"Riad (King Fahd)","casa":"Barcelona","marc":"2-3","gb":[["L. de Jong","41"],["Ansu Fati","83"]],"gm":[["Vinícius","25"],["Benzema","72"],["Valverde","98"]],"nota":"Prórroga"},{"f":"2022-03-20","comp":"LaLiga","inst":"J29","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-4","gb":[["Aubameyang","29, 51"],["Araújo","38"],["Ferran Torres","47"]],"gm":[],"nota":""},{"f":"2022-10-16","comp":"LaLiga","inst":"J9","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"3-1","gb":[["Ferran Torres","83"]],"gm":[["Benzema","12"],["Valverde","35"],["Rodrygo","90+1 (p.)"]],"nota":""},{"f":"2023-01-15","comp":"Supercopa","inst":"Final","sede":"Riad (King Fahd)","casa":"Real Madrid","marc":"1-3","gb":[["Gavi","33"],["Lewandowski","45"],["Pedri","69"]],"gm":[["Benzema","90+3"]],"nota":"Título: Barcelona"},{"f":"2023-03-02","comp":"Copa","inst":"Semifinal ida","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-1","gb":[["Militão","26 (p.p.)"]],"gm":[],"nota":""},{"f":"2023-03-19","comp":"LaLiga","inst":"J26","sede":"Camp Nou","casa":"Barcelona","marc":"2-1","gb":[["Sergi Roberto","45"],["Kessié","90+1"]],"gm":[["Araújo","9 (p.p.)"]],"nota":""},{"f":"2023-04-05","comp":"Copa","inst":"Semifinal vuelta","sede":"Camp Nou","casa":"Barcelona","marc":"0-4","gb":[],"gm":[["Vinícius","45+1"],["Benzema","50, 58 (p.), 80"]],"nota":"Global 4-1: pasa el Real Madrid"},{"f":"2023-10-28","comp":"LaLiga","inst":"J11","sede":"Montjuïc","casa":"Barcelona","marc":"1-2","gb":[["Gündoğan","6"]],"gm":[["Bellingham","68, 90+2"]],"nota":""},{"f":"2024-01-14","comp":"Supercopa","inst":"Final","sede":"Riad (King Saud)","casa":"Real Madrid","marc":"4-1","gb":[["Lewandowski","33"]],"gm":[["Vinícius","7, 10, 39 (p.)"],["Rodrygo","64"]],"nota":"Título: Real Madrid"},{"f":"2024-04-21","comp":"LaLiga","inst":"J32","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"3-2","gb":[["Christensen","6"],["Fermín López","69"]],"gm":[["Vinícius","18 (p.)"],["Lucas Vázquez","73"],["Bellingham","90+1"]],"nota":""},{"f":"2024-10-26","comp":"LaLiga","inst":"J11","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"0-4","gb":[["Lewandowski","54, 56"],["Lamine Yamal","77"],["Raphinha","84"]],"gm":[],"nota":""},{"f":"2025-01-12","comp":"Supercopa","inst":"Final","sede":"Yeda","casa":"Real Madrid","marc":"2-5","gb":[["Lamine Yamal","22"],["Lewandowski","36 (p.)"],["Raphinha","39, 48"],["Balde","45+10"]],"gm":[["Mbappé","5"],["Rodrygo","60"]],"nota":"Título: Barcelona"},{"f":"2025-04-26","comp":"Copa","inst":"Final","sede":"Sevilla (La Cartuja)","casa":"Barcelona","marc":"3-2","gb":[["Pedri","28"],["Ferran Torres","84"],["Koundé","116"]],"gm":[["Mbappé","70"],["Tchouaméni","77"]],"nota":"Prórroga · Título: Barcelona"},{"f":"2025-05-11","comp":"LaLiga","inst":"J35","sede":"Montjuïc","casa":"Barcelona","marc":"4-3","gb":[["Eric García","19"],["Lamine Yamal","32"],["Raphinha","34, 45"]],"gm":[["Mbappé","5 (p.), 14, 70"]],"nota":""},{"f":"2025-10-26","comp":"LaLiga","inst":"J10","sede":"Santiago Bernabéu","casa":"Real Madrid","marc":"2-1","gb":[["Fermín López","38"]],"gm":[["Mbappé","22"],["Bellingham","43"]],"nota":""},{"f":"2026-01-11","comp":"Supercopa","inst":"Final","sede":"Yeda","casa":"Barcelona","marc":"3-2","gb":[["Raphinha","36, 73"],["Lewandowski","45+4"]],"gm":[["Vinícius","45+2"],["Gonzalo García","45+6"]],"nota":"Título: Barcelona"},{"f":"2026-05-10","comp":"LaLiga","inst":"J35","sede":"Camp Nou","casa":"Barcelona","marc":"2-0","gb":[["Rashford","9"],["Ferran Torres","18"]],"gm":[],"nota":""},{"f":"2026-10-25","comp":"LaLiga","inst":"","sede":"Spotify Camp Nou","casa":"Barcelona","marc":"1-2","gb":[["Raphinha","61"]],"gm":[["Mbappé","41, 87"]],"nota":""}];
 
 /* ---------- utilidades ---------- */
 const NOM = {Barcelona:"Barcelona","Real Madrid":"Real Madrid"};
@@ -379,11 +383,27 @@ function pintarBalance(){
 }
 
 /* ---------- hoy ---------- */
-const KICK = new Date("2026-10-25T21:00:00+01:00").getTime();
+const NEXT = { iso:"2027-05-09T21:00:00+02:00", comp:"LaLiga", inst:"J35", sede:"Santiago Bernabéu", casa:"Real Madrid" };
+
+function pintarHoy(){
+  const u = all().slice().sort((a,b)=>b.f.localeCompare(a.f))[0];
+  if(u){
+    const [x,y]=scoreOf(u);
+    const gl = arr => (arr&&arr.length) ? arr.map(([p,t])=>`${p} ${t}’`).join(", ") : "—";
+    ultimoBody.innerHTML = `<b style="color:#e7e4f0">${fdate(u.f)} · ${u.comp}${u.inst?" · "+u.inst:""}</b><br>
+      ${u.sede||""} — <b>Barça ${x}–${y} Madrid</b><br>
+      <span style="opacity:.75">Barça: ${gl(u.gb)}<br>Madrid: ${gl(u.gm)}</span>`;
+  }
+  hoyComp.textContent = `${NEXT.comp} · ${NEXT.inst}`;
+  hoyTitulo.textContent = NEXT.casa==="Barcelona" ? "Barcelona – Real Madrid" : "Real Madrid – Barcelona";
+  hoyMeta.textContent  = `${fdate(NEXT.iso.slice(0,10))} · 21:00 · ${NEXT.sede}`;
+  hoyEstado.textContent = "Próximo Clásico de LaLiga. La app se actualiza sola con el resultado.";
+}
+const KICK = new Date(NEXT.iso).getTime();
 function tick(){
   const d = KICK - Date.now();
   if(d<=0){ ["cdD","cdH","cdM","cdS"].forEach(i=>document.getElementById(i).textContent="00");
-    hoyEstado.textContent = d>-3*3600e3 ? "En juego o recién terminado. Añade el resultado abajo." : "Partido disputado. Añade el resultado abajo.";
+    hoyEstado.textContent = "Fecha pendiente de confirmación oficial.";
     return; }
   const s=Math.floor(d/1000);
   cdD.textContent=String(Math.floor(s/86400)).padStart(2,"0");
@@ -391,10 +411,10 @@ function tick(){
   cdM.textContent=String(Math.floor(s%3600/60)).padStart(2,"0");
   cdS.textContent=String(s%60).padStart(2,"0");
 }
-tick(); setInterval(tick,1000);
+pintarHoy(); tick(); setInterval(tick,1000);
 
 /* ---------- formulario ---------- */
-fFecha.value = "2026-10-25";
+fFecha.value = new Date().toISOString().slice(0,10);
 formAdd.onsubmit = ev=>{
   ev.preventDefault();
   const gl=parseInt(fGL.value||"0",10), gv=parseInt(fGV.value||"0",10);
@@ -414,10 +434,10 @@ formAdd.onsubmit = ev=>{
   }
   EXTRAS.push({f:fFecha.value, comp:fComp.value, inst:fInst.value||"", sede:fSede.value||"", casa:local, marc, gb, gm, nota:"", extra:true});
   localStorage.setItem(KEY, JSON.stringify(EXTRAS));
-  formAdd.reset(); fFecha.value="2026-10-25"; fGL.value="0"; fGV.value="0";
+  formAdd.reset(); fFecha.value=new Date().toISOString().slice(0,10); fGL.value="0"; fGV.value="0";
   okmsg.textContent="Guardado. Ya aparece en Partidos.";
   setTimeout(()=>okmsg.textContent="",4000);
-  kpis(); pintarLista(); pintarBalance();
+  kpis(); pintarLista(); pintarBalance(); pintarHoy();
 };
 
 /* ---------- init ---------- */
