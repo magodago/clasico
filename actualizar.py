@@ -125,7 +125,7 @@ def main():
                 if ya_existe(f):
                     continue
                 goles_b, goles_m = parse_goles(ev["id"], liga)
-                semana = ev.get("week", {}).get("number")
+                semana = ev.get("week", {}).get("number") or d.get("week", {}).get("number")
                 inst = f"J{semana}" if (comp == "LaLiga" and semana) else ""
                 entry = {
                     "f": f, "comp": comp, "j": inst,
